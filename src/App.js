@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
+import {Col, Container, Jumbotron, Nav, Navbar, Row} from "react-bootstrap";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Home from "./Component/Home";
 import Add from "./Component/Add";
@@ -56,30 +56,30 @@ class App extends Component {
     render() {
         return (
             <>
-                <Container>
-                    <Row>
-                        <Col>
-                            <Navbar fixed="bottom" expand="md" bg="dark" variant="dark">
-                                <Navbar.Brand href="/home">Post-App</Navbar.Brand>
-                                <Nav className="mr-auto">
-                                    <Nav.Link href="/home">Home</Nav.Link>
-                                    <Nav.Link href="/add">Add</Nav.Link>
-                                </Nav>
-                            </Navbar>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <Navbar fixed="bottom" expand="md" bg="dark" variant="dark">
+                                    <Navbar.Brand href="/home">Post-App</Navbar.Brand>
+                                    <Nav className="mr-auto">
+                                        <Nav.Link href="/home">Home</Nav.Link>
+                                        <Nav.Link href="/add">Add</Nav.Link>
+                                    </Nav>
+                                </Navbar>
 
-                            <Router>
-                                <Switch>
+                                <Router>
+                                    <Switch>
 
-                                    <Route path="/home" component={Home}/>
-                                    <Route path="/add" component={Add}/>
+                                        <Route path="/home" component={Home}/>
+                                        <Route path="/add" component={Add}/>
 
-                                </Switch>
+                                    </Switch>
 
-                            </Router>
-                        </Col>
-                    </Row>
+                                </Router>
+                            </Col>
+                        </Row>
 
-                </Container>
+                    </Container>
             </>
         );
     }
