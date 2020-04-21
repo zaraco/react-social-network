@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {CardGroup, Card, Row, Col, Jumbotron} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faComment, faHeart} from "@fortawesome/free-solid-svg-icons";
 
 
 class Home extends Component {
@@ -14,23 +16,55 @@ class Home extends Component {
         super();
 
         this.state = {
-            posts: posts
+            posts: posts,
+            showComment: null
+
         }
     }
 
+    clickHandleHeart = (i) => {
+
+        this.state.posts[i].like++;
+
+        this.setState({
+            posts: this.state.posts
+        })
+    }
+
+    clickHandleComment = (i) => {
+        this.setState({
+            showComment: (this.state.showComment != i) ? i : null
+        })
+    }
+
     render() {
+
         const {posts} = this.state
 
-        let postsShow = posts.length ? posts.map((post) =>
-            <Card style={{width: '18rem'}}>
-                <Card.Img style={{width: "210px", height: "200px"}} variant="top" src={post.image} roundedCircle/>
+        let postsShow = posts.length ? posts.map((post, i) =>
+            <Card key={i} style={{width: '18rem'}}>
+                <Card.Img variant="top" src={post.image} roundedCircle/>
                 <Card.Body>
-                    <Card.Text style={{color: "red"}}>
+                    <Card.Text>
                         {post.text}
                         <br/>
-                        Like : {post.like}
+                        <FontAwesomeIcon icon={faHeart} style={{cursor: 'pointer'}} onClick={() => {
+                            this.clickHandleHeart(i)
+                        }}/>
+                        <span> {post.like} </span>
+
                         <br/>
-                       Comments: {post.comments}
+                        <FontAwesomeIcon icon={faComment} onClick={() => {
+                            this.clickHandleComment(i)
+                        }}/>
+                        <span>
+                                 {post.comments.map((comment) =>
+                                     <div style={this.state.showComment == i ? {display: 'block'} : {display: 'none'}}>
+                                         {comment}
+                                     </div>
+                                 )}
+                             </span>
+
                     </Card.Text>
 
                 </Card.Body>

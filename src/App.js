@@ -14,7 +14,11 @@ class App extends Component {
                 image: 'home-energy-score-upgrade-portland-1024x683.jpg',
                 text: 'home-energy-score',
                 like: 0,
-                comments: []
+                comments: [
+                    'it is so wonderful',
+                    'it is so bad',
+                    'it is a nice '
+                ]
 
             },
 
@@ -22,14 +26,22 @@ class App extends Component {
                 image: 'home-insurance-score.jpg',
                 text: 'home-insurance',
                 like: 0,
-                comments: []
+                comments: [
+                    'you are the best of couple',
+                    'you are happy',
+                    'you are incredible'
+                ]
             },
 
             {
                 image: 'HOMEALONE3CS.jpg',
                 text: 'HOMEALONE',
                 like: 0,
-                comments: []
+                comments: [
+                    'you are cute',
+                    'you are brave',
+                    'you are nice person'
+                ]
 
             }
 
