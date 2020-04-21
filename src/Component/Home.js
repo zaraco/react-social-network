@@ -1,60 +1,56 @@
 import React, {Component} from "react";
-import {Figure, Row, Col} from "react-bootstrap";
+import {CardGroup, Card, Row, Col, Jumbotron} from "react-bootstrap";
 
 
 class Home extends Component {
     constructor() {
 
-        let items = JSON.parse(localStorage.getItem('items'))
+        let posts = JSON.parse(localStorage.getItem('posts'))
 
-      /*  if ( == null) {
-            localStorage.setItem('items', JSON.stringify([]))
-            items = []
-        }*/
+        if (posts == null) {
+            localStorage.setItem('posts', JSON.stringify([]))
+            posts = []
+        }
         super();
 
         this.state = {
-            items: items
+            posts: posts
         }
     }
 
     render() {
+        const {posts} = this.state
+
+        let postsShow = posts.length ? posts.map((post) =>
+            <Card style={{width: '18rem'}}>
+                <Card.Img style={{width: "210px", height: "200px"}} variant="top" src={post.image} roundedCircle/>
+                <Card.Body>
+                    <Card.Text style={{color: "red"}}>
+                        {post.text}
+                        <br/>
+                        Like : {post.like}
+                        <br/>
+                       Comments: {post.comments}
+                    </Card.Text>
+
+                </Card.Body>
+            </Card>
+        ) : null
 
         return (
             <>
-                <Row>
-                    <Col md={4}>
-                        <Figure>
-                            <Figure.Image
-                                width="100%"
-                                alt="171x180"
-                                src={this.state.post.image}
-                            />
+                <br/>
+                <br/>
+                <Jumbotron>
 
-                        </Figure>
-                    </Col>
-                    <Col>
-                        <h1>
-                            {this.state.product.name}
-                        </h1>
-
-                        <p>
-                            {this.state.product.text}
-                        </p>
-
-                        <p>
-                            Amount: {this.state.product.amount} Pcs
-                        </p>
-                        <p>
-                            Price: {this.state.product.price} €
-                        </p>
-
-                        <span style={{color: "red", fontWeight: "bold"}}>
-                             Carrier: Free
-                       </span>
-
-                    </Col>
-                </Row>
+                    <Row>
+                        <Col>
+                            <CardGroup>
+                                {postsShow}
+                            </CardGroup>
+                        </Col>
+                    </Row>
+                </Jumbotron>
             </>
         );
     }

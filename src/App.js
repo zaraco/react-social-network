@@ -12,7 +12,7 @@ class App extends Component {
         const posts = [
             {
                 image: 'home-energy-score-upgrade-portland-1024x683.jpg',
-                text: '',
+                text: 'home-energy-score',
                 like: 0,
                 comments: []
 
@@ -20,14 +20,14 @@ class App extends Component {
 
             {
                 image: 'home-insurance-score.jpg',
-                text: '',
+                text: 'home-insurance',
                 like: 0,
                 comments: []
             },
 
             {
                 image: 'HOMEALONE3CS.jpg',
-                text: '',
+                text: 'HOMEALONE',
                 like: 0,
                 comments: []
 
@@ -37,9 +37,7 @@ class App extends Component {
 
         localStorage.setItem('posts', JSON.stringify(posts))
 
-        this.state = {
-            posts: posts,
-        }
+
     }
 
 
@@ -53,7 +51,7 @@ class App extends Component {
                                 <Navbar.Brand href="/home">Post-App</Navbar.Brand>
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/home">Home</Nav.Link>
-                                    <Nav.Link href="/add">Features</Nav.Link>
+                                    <Nav.Link href="/add">Add</Nav.Link>
                                 </Nav>
                             </Navbar>
 
